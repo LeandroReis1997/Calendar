@@ -15,17 +15,17 @@ namespace api.calendar.Bll
             _schedulingDal = schedulingDal;
         }
 
-        public Task<Scheduling> AddRoomScheduling(Scheduling scheduling)
+        public async Task<Scheduling> AddRoomScheduling(Scheduling scheduling)
         {
-            return _schedulingDal.AddRoomScheduling(scheduling);
+            return await _schedulingDal.AddRoomScheduling(scheduling);
         }
 
         public int DeleteRoomScheduling(int SchedulingIdentity) =>
             _schedulingDal.DeleteRoomScheduling(SchedulingIdentity);
 
-        public Task<Scheduling> EditRoomScheduling(Scheduling scheduling)
+        public async Task<Scheduling> EditRoomScheduling(Scheduling scheduling)
         {
-            return _schedulingDal.EditRoomScheduling(scheduling);
+            return await _schedulingDal.EditRoomScheduling(scheduling);
         }
 
         public List<Scheduling> GetAllScheduling() =>
