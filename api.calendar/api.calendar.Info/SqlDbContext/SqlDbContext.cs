@@ -9,7 +9,7 @@ namespace api.calendar.Info.SqlDbContext
             : base(options) { }
 
         public DbSet<Scheduling> Scheduling { get; set; }
-
         public DbSet<Room> Room { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
