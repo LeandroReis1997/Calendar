@@ -23,7 +23,7 @@ namespace api.calendar.Bll
         public int DeleteRoomScheduling(int SchedulingIdentity) =>
             _schedulingDal.DeleteRoomScheduling(SchedulingIdentity);
 
-        public async Task<Scheduling> EditRoomScheduling(Scheduling scheduling)
+        public async Task<Scheduling> EditRoomScheduling(int numberRoom, Scheduling scheduling)
         {
             return await _schedulingDal.EditRoomScheduling(scheduling);
         }

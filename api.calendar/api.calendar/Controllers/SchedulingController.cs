@@ -77,7 +77,7 @@ namespace api.calendar.Controllers
             if (schedulingCreateDTO == null || schedulingCreateDTO.Room != numberRoom)
                 return BadRequest();
 
-            return Accepted(_mapper.Map<SchedulingListDTO>(await _schedulingBll.EditRoomScheduling(_mapper.Map<Scheduling>(schedulingCreateDTO))));
+            return Accepted(_mapper.Map<SchedulingListDTO>(await _schedulingBll.EditRoomScheduling(numberRoom, _mapper.Map<Scheduling>(schedulingCreateDTO))));
         }
 
         [HttpDelete]
