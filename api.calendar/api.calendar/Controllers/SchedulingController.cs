@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace api.calendar.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("webapi/[controller]")]
     [ApiController]
     public class SchedulingController : Controller
     {
