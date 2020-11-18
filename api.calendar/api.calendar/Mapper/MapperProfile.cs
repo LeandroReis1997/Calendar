@@ -12,7 +12,9 @@ namespace api.calendar.Mapper
     {
         public MapperProfile()
         {
-            CreateMap<SchedulingCreateDTO, Scheduling>();
+            CreateMap<SchedulingDTO, Scheduling>();
+
+            CreateMap<SchedulingListDTO, Scheduling>();
         }
     }
 }

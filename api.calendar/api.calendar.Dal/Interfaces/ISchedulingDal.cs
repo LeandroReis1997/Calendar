@@ -7,9 +7,10 @@ namespace api.calendar.Dal.Interfaces
     public interface ISchedulingDal
     {
         List<Scheduling> GetAllScheduling();
-        Scheduling GetByRoom(int numberRoom);
+        Scheduling GetByschedulingIdentity(int schedulingIdentity);
+        Scheduling GetByRoom(string nameRoom);
         Task<Scheduling> AddRoomScheduling(Scheduling scheduling);
         Task<Scheduling> EditRoomScheduling(Scheduling scheduling);
-        int DeleteRoomScheduling(int SchedulingIdentity);
+        int DeleteRoomScheduling(int schedulingIdentity);
     }
 }

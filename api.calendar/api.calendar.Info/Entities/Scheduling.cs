@@ -10,7 +10,9 @@ namespace api.calendar.Info.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SchedulingIdentity { get; set; }
         public string Title { get; set; }
-        public int Room { get; set; }
+        public int RoomIdentity { get; set; }
+        [ForeignKey("RoomIdentity")]
+        public virtual Room Rooms { get; set; }
         public DateTime DateStartTime { get; set; }
         public DateTime DateEndTime { get; set; }
     }

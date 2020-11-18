@@ -42,7 +42,10 @@ namespace api.calendar.Dal
         public List<Scheduling> GetAllScheduling() =>
             _sqlDbContext.Scheduling.ToList();
 
-        public Scheduling GetByRoom(int numberRoom) =>
-            _sqlDbContext.Scheduling.FirstOrDefault(x => x.Room == numberRoom);
+        public Scheduling GetByRoom(string nameRoom) =>
+            _sqlDbContext.Scheduling.FirstOrDefault(x => x.Rooms.RoomName == nameRoom);
+
+        public Scheduling GetByschedulingIdentity(int schedulingIdentity) =>
+            _sqlDbContext.Scheduling.FirstOrDefault(x => x.SchedulingIdentity == schedulingIdentity);
     }
 }

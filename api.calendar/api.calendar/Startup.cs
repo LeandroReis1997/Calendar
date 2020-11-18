@@ -65,6 +65,8 @@ namespace api.calendar
 
             services.AddTransient<ISchedulingBll, SchedulingBll>();
             services.AddTransient<ISchedulingDal, SchedulingDal>();
+            services.AddTransient<IRoomBll, RoomBll>();
+            services.AddTransient<IRoomDal, RoomDal>();
 
             var mapperConfig = new MapperConfiguration(mc =>
             {

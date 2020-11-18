@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace api.calendar.DTO.Scheduling
 {
-    public class SchedulingCreateDTO
+    public class SchedulingDTO
     {
         public string Title { get; set; }
         [Required(ErrorMessage = "Id da sala obri")]
