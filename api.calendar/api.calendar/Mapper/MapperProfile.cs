@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using api.calendar.DTO.Room;
 using api.calendar.DTO.Scheduling;
 using api.calendar.Info.Entities;
 using AutoMapper;
@@ -15,6 +12,10 @@ namespace api.calendar.Mapper
             CreateMap<SchedulingDTO, Scheduling>();
 
             CreateMap<SchedulingListDTO, Scheduling>();
+
+            CreateMap<RoomDTO, Room>();
+
+            CreateMap<RoomListDTO, Room>().ReverseMap();
         }
     }
 }

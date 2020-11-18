@@ -1,8 +1,10 @@
-﻿namespace api.calendar.DTO.Room
+﻿using System;
+
+namespace api.calendar.DTO.Room
 {
     public class RoomListDTO
     {
-        public int RoomIdentity { get; set; }
+        public Guid RoomIdentity { get; set; }
         public string RoomName { get; set; }
     }
 }

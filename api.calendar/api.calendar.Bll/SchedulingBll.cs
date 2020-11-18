@@ -1,6 +1,7 @@
 ﻿using api.calendar.Bll.Interfaces;
 using api.calendar.Dal.Interfaces;
 using api.calendar.Info.Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -20,10 +21,10 @@ namespace api.calendar.Bll
             return await _schedulingDal.AddRoomScheduling(scheduling);
         }
 
-        public int DeleteRoomScheduling(int schedulingIdentity) =>
+        public Guid DeleteRoomScheduling(Guid schedulingIdentity) =>
             _schedulingDal.DeleteRoomScheduling(schedulingIdentity);
 
-        public async Task<Scheduling> EditRoomScheduling(int schedulingIdentity, Scheduling scheduling)
+        public async Task<Scheduling> EditRoomScheduling(Guid schedulingIdentity, Scheduling scheduling)
         {
             return await _schedulingDal.EditRoomScheduling(scheduling);
         }
@@ -34,7 +35,7 @@ namespace api.calendar.Bll
         public Scheduling GetByRoom(string nameRoom) =>
             _schedulingDal.GetByRoom(nameRoom);
 
-        public Scheduling GetByschedulingIdentity(int schedulingIdentity) =>
+        public Scheduling GetByschedulingIdentity(Guid schedulingIdentity) =>
             _schedulingDal.GetByschedulingIdentity(schedulingIdentity);
     }
 }

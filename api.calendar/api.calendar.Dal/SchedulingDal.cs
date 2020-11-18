@@ -1,6 +1,7 @@
 ﻿using api.calendar.Dal.Interfaces;
 using api.calendar.Info.Entities;
 using api.calendar.Info.SqlDbContext;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace api.calendar.Dal
             return scheduling;
         }
 
-        public int DeleteRoomScheduling(int SchedulingIdentity)
+        public Guid DeleteRoomScheduling(Guid SchedulingIdentity)
         {
             var entity = _sqlDbContext.Scheduling.FirstOrDefault(x => x.SchedulingIdentity.Equals(SchedulingIdentity));
             _sqlDbContext.Remove(entity);
@@ -45,7 +46,7 @@ namespace api.calendar.Dal
         public Scheduling GetByRoom(string nameRoom) =>
             _sqlDbContext.Scheduling.FirstOrDefault(x => x.Rooms.RoomName == nameRoom);
 
-        public Scheduling GetByschedulingIdentity(int schedulingIdentity) =>
+        public Scheduling GetByschedulingIdentity(Guid schedulingIdentity) =>
             _sqlDbContext.Scheduling.FirstOrDefault(x => x.SchedulingIdentity == schedulingIdentity);
     }
 }

@@ -4,6 +4,7 @@ using api.calendar.Info.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
@@ -58,7 +59,7 @@ namespace api.calendar.Controllers
         [SwaggerResponse((int)HttpStatusCode.Unauthorized, Description = "Erro de Autenticação")]
         [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Recurso não encontrado")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Erro na API")]
-        public IActionResult GetByroomidentity(int roomIdentity)
+        public IActionResult GetByroomidentity(Guid roomIdentity)
         {
             if (_roomBll.GetByRoomIdentity(roomIdentity) == null)
                 return NotFound();
@@ -88,7 +89,7 @@ namespace api.calendar.Controllers
         [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Recurso não encontrado")]
         [SwaggerResponse((int)HttpStatusCode.Conflict, Description = "Conflito")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Erro na API")]
-        public async Task<IActionResult> EditRoomRoom(int roomIdentity, [FromBody] RoomDTO RoomDTO)
+        public async Task<IActionResult> EditRoomRoom(Guid roomIdentity, [FromBody] RoomDTO RoomDTO)
         {
             if (RoomDTO == null)
                 return BadRequest();
@@ -103,7 +104,7 @@ namespace api.calendar.Controllers
         [SwaggerResponse((int)HttpStatusCode.Unauthorized, Description = "Erro de Autenticação")]
         [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Recurso não encontrado")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Erro na API")]
-        public IActionResult Delete(int roomIdentity)
+        public IActionResult Delete(Guid roomIdentity)
         {
             if (_roomBll.GetByRoomIdentity(roomIdentity) == null)
                 return NotFound();

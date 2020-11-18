@@ -1,6 +1,7 @@
 ﻿using api.calendar.Bll.Interfaces;
 using api.calendar.Dal.Interfaces;
 using api.calendar.Info.Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -19,14 +20,14 @@ namespace api.calendar.Bll
             return await _roomDal.AddRoom(room);
         }
 
-        public int DeleteRoom(int roomIdentity)
+        public Guid DeleteRoom(Guid roomIdentity)
         {
             return _roomDal.DeleteRoom(roomIdentity);
         }
 
-        public async Task<Room> EditRoom(int roomIdentity, Room room)
+        public async Task<Room> EditRoom(Guid roomIdentity, Room room)
         {
-            return await _roomDal.EditRoom(roomIdentity, room);
+            return await _roomDal.EditRoom(room);
         }
 
         public List<Room> GetAllRoom() =>
@@ -35,7 +36,7 @@ namespace api.calendar.Bll
         public Room GetByRoom(string nameRoom) =>
             _roomDal.GetByRoom(nameRoom);
 
-        public Room GetByRoomIdentity(int roomIdentity) =>
+        public Room GetByRoomIdentity(Guid roomIdentity) =>
             _roomDal.GetByRoomIdentity(roomIdentity);
     }
 }

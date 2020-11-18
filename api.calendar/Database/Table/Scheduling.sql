@@ -2,9 +2,9 @@
 
 create table Scheduling
 (
-	SchedulingIdentity int identity not null,
+	SchedulingIdentity UNIQUEIDENTIFIER DEFAULT NEWID(),
 	Title varchar(50) not null,
-	RoomIdentity int not null,
+	RoomIdentity uniqueidentifier not null,
 	DateStartTime datetime,
 	DateEndTime datetime
 )

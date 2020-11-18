@@ -1,5 +1,7 @@
-﻿create table Room
+﻿
+
+create table Room
 (
-	RoomIdentity int not null identity,
+	RoomIdentity UNIQUEIDENTIFIER DEFAULT NEWID(),
 	RoomName varchar(50) not null
 )
