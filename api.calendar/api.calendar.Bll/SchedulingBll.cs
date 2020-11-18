@@ -10,8 +10,10 @@ namespace api.calendar.Bll
     {
         private ISchedulingDal _schedulingDal;
 
-        public SchedulingBll(ISchedulingDal schedulingDal) =>
+        public SchedulingBll(ISchedulingDal schedulingDal)
+        {
             _schedulingDal = schedulingDal;
+        }
 
         public Task<Scheduling> AddRoomScheduling(Scheduling scheduling)
         {

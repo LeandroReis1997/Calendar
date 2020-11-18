@@ -11,11 +11,6 @@ namespace api.calendar.Dal
     {
         private SqlDbContext _sqlDbContext;
 
-        public SchedulingDal()
-        {
-
-        }
-
         public SchedulingDal(SqlDbContext sqlDbContext)
         {
             _sqlDbContext = sqlDbContext;

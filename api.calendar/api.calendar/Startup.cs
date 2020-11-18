@@ -16,6 +16,8 @@ using api.calendar.Bll;
 using api.calendar.Bll.Interfaces;
 using api.calendar.Dal;
 using api.calendar.Dal.Interfaces;
+using api.calendar.Info.SqlDbContext;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.calendar
 {
@@ -32,6 +34,9 @@ namespace api.calendar
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<SqlDbContext>(options =>
+              options.UseSqlServer(Configuration["SqlConnection:SqlConnectionString"]));
 
             services.AddTransient<ISchedulingBll, SchedulingBll>();
             services.AddTransient<ISchedulingDal, SchedulingDal>();

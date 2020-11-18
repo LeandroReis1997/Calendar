@@ -9,7 +9,7 @@ namespace api.calendar.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SchedulingController : ControllerBase
+    public class SchedulingController : Controller
     {
         private ISchedulingBll _schedulingBll;
         private readonly IMapper _mapper;
