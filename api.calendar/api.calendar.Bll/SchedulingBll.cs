@@ -32,8 +32,8 @@ namespace api.calendar.Bll
         public List<Scheduling> GetAllScheduling() =>
             _schedulingDal.GetAllScheduling();
 
-        public Scheduling GetByRoom(string nameRoom) =>
-            _schedulingDal.GetByRoom(nameRoom);
+        public Scheduling GetByRoomScheduling(string nameRoom) =>
+            _schedulingDal.GetByRoomScheduling(nameRoom);
 
         public Scheduling GetByschedulingIdentity(Guid schedulingIdentity) =>
             _schedulingDal.GetByschedulingIdentity(schedulingIdentity);

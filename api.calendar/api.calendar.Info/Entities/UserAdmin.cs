@@ -1,15 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace api.calendar.Info.Entities
 {
-    public class User
+    public class UserAdmin
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int UsuarioIdentity { get; set; }
+        public Guid UserIdentity { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public string Senha { get; set; }
+        public string Password { get; set; }
     }
 }

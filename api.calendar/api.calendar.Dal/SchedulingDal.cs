@@ -1,6 +1,7 @@
 ﻿using api.calendar.Dal.Interfaces;
 using api.calendar.Info.Entities;
 using api.calendar.Info.SqlDbContext;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,12 +42,12 @@ namespace api.calendar.Dal
         }
 
         public List<Scheduling> GetAllScheduling() =>
-            _sqlDbContext.Scheduling.ToList();
+            _sqlDbContext.Scheduling.Include(x => x.Rooms).ToList();
 
-        public Scheduling GetByRoom(string nameRoom) =>
-            _sqlDbContext.Scheduling.FirstOrDefault(x => x.Rooms.RoomName == nameRoom);
+        public Scheduling GetByRoomScheduling(string nameRoom) =>
+            _sqlDbContext.Scheduling.Include(x => x.Rooms).FirstOrDefault(x => x.Rooms.RoomName == nameRoom);
 
         public Scheduling GetByschedulingIdentity(Guid schedulingIdentity) =>
-            _sqlDbContext.Scheduling.FirstOrDefault(x => x.SchedulingIdentity == schedulingIdentity);
+            _sqlDbContext.Scheduling.Include(x => x.Rooms).FirstOrDefault(x => x.SchedulingIdentity == schedulingIdentity);
     }
 }

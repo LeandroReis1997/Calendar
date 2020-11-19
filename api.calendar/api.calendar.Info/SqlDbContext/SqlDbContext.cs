@@ -10,6 +10,6 @@ namespace api.calendar.Info.SqlDbContext
 
         public DbSet<Scheduling> Scheduling { get; set; }
         public DbSet<Room> Room { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserAdmin> UserAdmin { get; set; }
     }
 }

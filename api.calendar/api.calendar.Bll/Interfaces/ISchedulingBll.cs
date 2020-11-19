@@ -9,7 +9,7 @@ namespace api.calendar.Bll.Interfaces
     {
         List<Scheduling> GetAllScheduling();
         Scheduling GetByschedulingIdentity(Guid schedulingIdentity);
-        Scheduling GetByRoom(string nameRoom);
+        Scheduling GetByRoomScheduling(string nameRoom);
         Task<Scheduling> AddRoomScheduling(Scheduling scheduling);
         Task<Scheduling> EditRoomScheduling(Guid schedulingIdentity, Scheduling scheduling);
         Guid DeleteRoomScheduling(Guid schedulingIdentity);
