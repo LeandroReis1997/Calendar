@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace api.calendar.Controllers
 {
-    [Route("webapi/useradmin")]
+    [Route("webapi/user")]
     [ApiController]
     public class UserAdminController : Controller
     {
@@ -75,7 +75,7 @@ namespace api.calendar.Controllers
         [SwaggerResponse((int)HttpStatusCode.Unauthorized, Description = "Erro de Autenticação")]
         [SwaggerResponse((int)HttpStatusCode.Conflict, Description = "Conflito")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Erro na API")]
-        public async Task<IActionResult> AddRoomRoom([FromBody] UserAdminDTO UserAdminDTO)
+        public async Task<IActionResult> AddUsers([FromBody] UserAdminDTO UserAdminDTO)
         {
             return Ok(await _userAdminBll.AddUsers(_mapper.Map<UserAdmin>(UserAdminDTO)));
         }

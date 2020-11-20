@@ -30,7 +30,7 @@ namespace api.calendar.Mapper
 
             CreateMap<UserAdminDTO, UserAdmin>();
 
-            CreateMap<UserAdminListDTO, UserAdmin>();
+            CreateMap<UserAdminListDTO, UserAdmin>().ReverseMap();
 
             #endregion
         }

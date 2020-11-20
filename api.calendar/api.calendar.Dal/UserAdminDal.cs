@@ -33,16 +33,11 @@ namespace api.calendar.Dal
             return userIdentity;
         }
 
-        public async Task<UserAdmin> EditUsers(Guid userIdentity, UserAdmin user)
+        public async Task<UserAdmin> EditUsers(UserAdmin user)
         {
             _sqlDbContext.UserAdmin.Update(user);
             await _sqlDbContext.SaveChangesAsync();
             return user;
-        }
-
-        public Task<UserAdmin> EditUsers(UserAdmin user)
-        {
-            throw new NotImplementedException();
         }
 
         public List<UserAdmin> GetAllUsers() =>

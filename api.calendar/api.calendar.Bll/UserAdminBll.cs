@@ -41,11 +41,8 @@ namespace api.calendar.Bll
         {
             try
             {
-                if (_userAdminDal.GetByEmail(user.Email) != null)
-                    throw new BusinessException("Email já cadastrado.");
-
+                user.UserIdentity = usersIdentity;
                 return await _userAdminDal.EditUsers(user);
-
             }
             catch (Exception ex)
             {

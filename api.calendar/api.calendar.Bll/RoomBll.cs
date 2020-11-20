@@ -27,6 +27,7 @@ namespace api.calendar.Bll
 
         public async Task<Room> EditRoom(Guid roomIdentity, Room room)
         {
+            room.RoomIdentity = roomIdentity;
             return await _roomDal.EditRoom(room);
         }
 

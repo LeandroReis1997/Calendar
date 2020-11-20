@@ -38,7 +38,7 @@ namespace api.calendar.Controllers
         }
 
         [HttpGet]
-        [Route("getbyroom/{nameroom}")]
+        [Route("getbyroomscheduling/{nameroom}")]
         [Produces(typeof(IEnumerable<SchedulingListDTO>))]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "OK", Type = typeof(SchedulingListDTO))]
         [SwaggerResponse((int)HttpStatusCode.Unauthorized, Description = "Erro de Autenticação")]
@@ -46,14 +46,14 @@ namespace api.calendar.Controllers
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Erro na API")]
         public IActionResult GetByRoom(string nameRoom)
         {
-            if (_schedulingBll.GetByRoom(nameRoom) == null)
+            if (_schedulingBll.GetByRoomScheduling(nameRoom) == null)
                 return NotFound();
 
-            return Ok(_mapper.Map<SchedulingListDTO>(_schedulingBll.GetByRoom(nameRoom)));
+            return Ok(_mapper.Map<SchedulingListDTO>(_schedulingBll.GetByRoomScheduling(nameRoom)));
         }
 
         [HttpGet]
-        [Route("getbyroom/{schedulingidentity}")]
+        [Route("getbyschedulingidentity/{schedulingidentity}")]
         [Produces(typeof(IEnumerable<SchedulingListDTO>))]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "OK", Type = typeof(SchedulingListDTO))]
         [SwaggerResponse((int)HttpStatusCode.Unauthorized, Description = "Erro de Autenticação")]
