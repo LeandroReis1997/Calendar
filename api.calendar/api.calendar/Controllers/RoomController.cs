@@ -73,7 +73,7 @@ namespace api.calendar.Controllers
         [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Recurso não encontrado")]
         [SwaggerResponse((int)HttpStatusCode.Conflict, Description = "Conflito")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Erro na API")]
-        public async Task<IActionResult> EditRoomRoom(Guid roomIdentity, [FromBody] RoomDTO RoomDTO)
+        public async Task<IActionResult> EditRoom(Guid roomIdentity, [FromBody] RoomDTO RoomDTO)
         {
             if (RoomDTO == null)
                 return BadRequest();

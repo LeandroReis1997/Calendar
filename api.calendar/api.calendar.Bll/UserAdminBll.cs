@@ -22,7 +22,7 @@ namespace api.calendar.Bll
             try
             {
                 var emailExist = _userAdminDal.GetByEmail(user.Email);
-                if (emailExist.Email != null)
+                if (emailExist != null)
                     throw new BusinessException("Email já cadastrado.");
 
                 return await _userAdminDal.AddUsers(user);
@@ -46,6 +46,7 @@ namespace api.calendar.Bll
                 {
                     UserIdentity = usersIdentity,
                     Name = user.Name,
+                    Email = user.Email,
                     Password = user.Password
                 });
             }

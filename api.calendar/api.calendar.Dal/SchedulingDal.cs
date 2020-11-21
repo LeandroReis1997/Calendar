@@ -28,7 +28,6 @@ namespace api.calendar.Dal
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -52,10 +51,11 @@ namespace api.calendar.Dal
         public List<Scheduling> GetAllScheduling() =>
             _sqlDbContext.Scheduling.ToList();
 
-        public Scheduling GetByRoomScheduling(string nameRoom) =>
-            null;
 
         public Scheduling GetByschedulingIdentity(Guid schedulingIdentity) =>
             _sqlDbContext.Scheduling.FirstOrDefault(x => x.SchedulingIdentity == schedulingIdentity);
+
+        public IEnumerable<Scheduling> GetBySchedulingRoomIdentity(Guid roomIdentity) =>
+            _sqlDbContext.Scheduling.Where(x => x.RoomIdentity.Equals(roomIdentity));
     }
 }

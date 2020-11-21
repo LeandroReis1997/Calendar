@@ -4,6 +4,7 @@ using api.calendar.Info.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Volo.Abp;
 
 namespace api.calendar.Bll
 {
@@ -18,6 +19,14 @@ namespace api.calendar.Bll
 
         public async Task<Scheduling> AddRoomScheduling(Scheduling scheduling)
         {
+
+            var rooms = _schedulingDal.GetBySchedulingRoomIdentity(scheduling.RoomIdentity);
+
+            foreach (var item in rooms)
+            {
+                if (scheduling.DateStartTime == item.DateStartTime && scheduling.DateEndTime == item.DateEndTime)
+                    throw new BusinessException("Data de agendamento já constam, escolha outra data.");
+            }
             return await _schedulingDal.AddRoomScheduling(scheduling);
         }
 
@@ -26,16 +35,23 @@ namespace api.calendar.Bll
 
         public async Task<Scheduling> EditRoomScheduling(Guid schedulingIdentity, Scheduling scheduling)
         {
-            return await _schedulingDal.EditRoomScheduling(scheduling);
+            return await _schedulingDal.EditRoomScheduling(new Scheduling
+            {
+                SchedulingIdentity = schedulingIdentity,
+                Title = scheduling.Title,
+                RoomIdentity = scheduling.RoomIdentity,
+                DateStartTime = scheduling.DateStartTime,
+                DateEndTime = scheduling.DateEndTime
+            });
         }
 
         public List<Scheduling> GetAllScheduling() =>
             _schedulingDal.GetAllScheduling();
 
-        public Scheduling GetByRoomScheduling(string nameRoom) =>
-            _schedulingDal.GetByRoomScheduling(nameRoom);
-
         public Scheduling GetByschedulingIdentity(Guid schedulingIdentity) =>
             _schedulingDal.GetByschedulingIdentity(schedulingIdentity);
+
+        public IEnumerable<Scheduling> GetBySchedulingRoomIdentity(Guid roomIdentity) =>
+            _schedulingDal.GetBySchedulingRoomIdentity(roomIdentity);
     }
 }

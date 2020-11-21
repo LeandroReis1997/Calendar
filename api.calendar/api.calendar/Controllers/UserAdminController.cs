@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace api.calendar.Controllers
 {
-    [Route("webapi/user")]
+    [Route("webapi/useradmin")]
     [ApiController]
     public class UserAdminController : Controller
     {
@@ -25,7 +25,6 @@ namespace api.calendar.Controllers
         }
 
         [HttpGet]
-        [Route("getall")]
         [Produces(typeof(IEnumerable<UserAdminListDTO>))]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "OK", Type = typeof(IEnumerable<UserAdminListDTO>))]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "OK", Type = typeof(UserAdminListDTO))]
@@ -65,7 +64,7 @@ namespace api.calendar.Controllers
         }
 
         [HttpGet]
-        [Route("getbyusersidentity/{usersidentity}")]
+        [Route("{usersidentity}")]
         [Produces(typeof(IEnumerable<UserAdminListDTO>))]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "OK", Type = typeof(UserAdminListDTO))]
         [SwaggerResponse((int)HttpStatusCode.Unauthorized, Description = "Erro de Autenticação")]

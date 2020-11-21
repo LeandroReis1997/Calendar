@@ -14,7 +14,7 @@ namespace api.calendar.Mapper
 
             CreateMap<SchedulingDTO, Scheduling>();
 
-            CreateMap<SchedulingListDTO, Scheduling>();
+            CreateMap<SchedulingListDTO, Scheduling>().ReverseMap();
 
             #endregion
 
