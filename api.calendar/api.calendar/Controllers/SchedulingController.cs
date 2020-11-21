@@ -25,7 +25,6 @@ namespace api.calendar.Controllers
         }
 
         [HttpGet]
-        [Route("getall")]
         [Produces(typeof(IEnumerable<SchedulingListDTO>))]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "OK", Type = typeof(IEnumerable<SchedulingListDTO>))]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "OK", Type = typeof(SchedulingListDTO))]

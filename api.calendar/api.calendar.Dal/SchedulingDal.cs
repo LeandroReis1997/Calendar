@@ -20,9 +20,17 @@ namespace api.calendar.Dal
 
         public async Task<Scheduling> AddRoomScheduling(Scheduling scheduling)
         {
-            _sqlDbContext.Add(scheduling);
-            await _sqlDbContext.SaveChangesAsync();
-            return scheduling;
+            try
+            {
+                await _sqlDbContext.AddAsync(scheduling);
+                await _sqlDbContext.SaveChangesAsync();
+                return scheduling;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public Guid DeleteRoomScheduling(Guid SchedulingIdentity)
@@ -42,12 +50,12 @@ namespace api.calendar.Dal
         }
 
         public List<Scheduling> GetAllScheduling() =>
-            _sqlDbContext.Scheduling.Include(x => x.Rooms).ToList();
+            _sqlDbContext.Scheduling.ToList();
 
         public Scheduling GetByRoomScheduling(string nameRoom) =>
-            _sqlDbContext.Scheduling.Include(x => x.Rooms).FirstOrDefault(x => x.Rooms.RoomName == nameRoom);
+            null;
 
         public Scheduling GetByschedulingIdentity(Guid schedulingIdentity) =>
-            _sqlDbContext.Scheduling.Include(x => x.Rooms).FirstOrDefault(x => x.SchedulingIdentity == schedulingIdentity);
+            _sqlDbContext.Scheduling.FirstOrDefault(x => x.SchedulingIdentity == schedulingIdentity);
     }
 }

@@ -9,10 +9,8 @@ namespace api.calendar.Info.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid SchedulingIdentity { get; set; }
-        public string Title { get; set; }
+        public string Title { get; set; }        
         public Guid RoomIdentity { get; set; }
-        [ForeignKey("RoomIdentity")]
-        public virtual Room Rooms { get; set; }
 
         //[DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]

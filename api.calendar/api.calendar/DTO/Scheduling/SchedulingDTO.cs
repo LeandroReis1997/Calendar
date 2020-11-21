@@ -7,7 +7,7 @@ namespace api.calendar.DTO.Scheduling
     {
         public string Title { get; set; }
         [Required(ErrorMessage = "Id da sala obri")]
-        public Guid Room { get; set; }
+        public Guid RoomIdentity { get; set; }
 
         [Required(ErrorMessage = "data")]
         public DateTime DateStartTime { get; set; }

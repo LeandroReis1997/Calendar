@@ -8,6 +8,7 @@ namespace api.calendar.Info.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column("RoomIdentity")]
         public Guid RoomIdentity { get; set; }
         public string RoomName { get; set; }
     }
