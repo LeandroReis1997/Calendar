@@ -51,6 +51,18 @@ namespace api.calendar.Controllers
 
             return Ok(_mapper.Map<UserAdminListDTO>(_userAdminBll.GetByEmail(email)));
         }
+                
+        [HttpGet]
+        [Route("login/{email}/{senha}")]
+        [Produces(typeof(IEnumerable<UserAdminListDTO>))]
+        [SwaggerResponse((int)HttpStatusCode.OK, Description = "OK", Type = typeof(UserAdminListDTO))]
+        [SwaggerResponse((int)HttpStatusCode.Unauthorized, Description = "Erro de Autenticação")]
+        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Recurso não encontrado")]
+        [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Erro na API")]
+        public IActionResult Login(string email, string senha)
+        {
+            return Ok(_mapper.Map<UserAdminListDTO>(_userAdminBll.Login(email,senha)));
+        }
 
         [HttpGet]
         [Route("getbyusersidentity/{usersidentity}")]

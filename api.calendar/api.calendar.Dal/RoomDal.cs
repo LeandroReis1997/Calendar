@@ -39,11 +39,11 @@ namespace api.calendar.Dal
             return room;
         }
 
-        public List<Room> GetAllRoom() =>
+        public IEnumerable<Room> GetAllRoom() =>
             _sqlDbContext.Room.ToList();
 
-        public Room GetByRoom(string numberRoom) =>
-            _sqlDbContext.Room.FirstOrDefault(x => x.RoomName == numberRoom);
+        public IEnumerable<Room> GetByRoom(string numberRoom) =>
+            _sqlDbContext.Room.Where(x => x.RoomName.Contains(numberRoom));
 
         public Room GetByRoomIdentity(Guid roomIdentity) =>
             _sqlDbContext.Room.FirstOrDefault(x => x.RoomIdentity == roomIdentity);

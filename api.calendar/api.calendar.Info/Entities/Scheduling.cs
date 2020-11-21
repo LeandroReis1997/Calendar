@@ -13,6 +13,9 @@ namespace api.calendar.Info.Entities
         public Guid RoomIdentity { get; set; }
         [ForeignKey("RoomIdentity")]
         public virtual Room Rooms { get; set; }
+
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateStartTime { get; set; }
         public DateTime DateEndTime { get; set; }
     }

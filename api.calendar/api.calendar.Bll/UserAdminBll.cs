@@ -21,7 +21,8 @@ namespace api.calendar.Bll
         {
             try
             {
-                if (_userAdminDal.GetByEmail(user.Email) != null)
+                var emailExist = _userAdminDal.GetByEmail(user.Email);
+                if (emailExist.Email != null)
                     throw new BusinessException("Email já cadastrado.");
 
                 return await _userAdminDal.AddUsers(user);
@@ -41,8 +42,12 @@ namespace api.calendar.Bll
         {
             try
             {
-                user.UserIdentity = usersIdentity;
-                return await _userAdminDal.EditUsers(user);
+                return await _userAdminDal.EditUsers(new UserAdmin
+                {
+                    UserIdentity = usersIdentity,
+                    Name = user.Name,
+                    Password = user.Password
+                });
             }
             catch (Exception ex)
             {
@@ -58,5 +63,10 @@ namespace api.calendar.Bll
 
         public UserAdmin GetByUsersIdentity(Guid userIdentity) =>
             _userAdminDal.GetByUsersIdentity(userIdentity);
+
+        public UserAdmin Login(string email, string senha)
+        {
+            return _userAdminDal.Login(email, senha);
+        }
     }
 }

@@ -7,9 +7,9 @@ namespace api.calendar.Bll.Interfaces
 {
     public interface IRoomBll
     {
-        List<Room> GetAllRoom();
+        IEnumerable<Room> GetAllRoom(string nameRoom);
         Room GetByRoomIdentity(Guid roomIdentity);
-        Room GetByRoom(string nameRoom);
+        IEnumerable<Room> GetByRoom(string numberRoom);
         Task<Room> AddRoom(Room room);
         Task<Room> EditRoom(Guid roomIdentity, Room room);
         Guid DeleteRoom(Guid roomIdentity);

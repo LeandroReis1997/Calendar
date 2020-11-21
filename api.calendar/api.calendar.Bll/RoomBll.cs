@@ -31,11 +31,16 @@ namespace api.calendar.Bll
             return await _roomDal.EditRoom(room);
         }
 
-        public List<Room> GetAllRoom() =>
-            _roomDal.GetAllRoom();
+        public IEnumerable<Room> GetAllRoom(string nameRoom)
+        {
 
-        public Room GetByRoom(string nameRoom) =>
-            _roomDal.GetByRoom(nameRoom);
+            IEnumerable<Room> rooms = nameRoom  != null ? _roomDal.GetByRoom(nameRoom) : _roomDal.GetAllRoom();
+
+            return rooms;
+        }
+
+        public IEnumerable<Room> GetByRoom(string numberRoom) =>
+            _roomDal.GetByRoom(numberRoom);
 
         public Room GetByRoomIdentity(Guid roomIdentity) =>
             _roomDal.GetByRoomIdentity(roomIdentity);

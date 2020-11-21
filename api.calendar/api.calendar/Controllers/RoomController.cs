@@ -25,35 +25,19 @@ namespace api.calendar.Controllers
         }
 
         [HttpGet]
-        [Route("getall")]
         [Produces(typeof(IEnumerable<RoomListDTO>))]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "OK", Type = typeof(IEnumerable<RoomListDTO>))]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "OK", Type = typeof(RoomListDTO))]
         [SwaggerResponse((int)HttpStatusCode.Unauthorized, Description = "Erro de Autenticação")]
         [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Recurso não encontrado")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Erro na API")]
-        public IActionResult GetAllRoom()
+        public IActionResult GetAllRoom(string nameRoom)
         {
-            return Ok(_mapper.Map<List<RoomListDTO>>(_roomBll.GetAllRoom()));
+            return Ok(_mapper.Map<IEnumerable<RoomListDTO>>(_roomBll.GetAllRoom(nameRoom)));
         }
 
         [HttpGet]
-        [Route("getbyroom/{nameroom}")]
-        [Produces(typeof(IEnumerable<RoomListDTO>))]
-        [SwaggerResponse((int)HttpStatusCode.OK, Description = "OK", Type = typeof(RoomListDTO))]
-        [SwaggerResponse((int)HttpStatusCode.Unauthorized, Description = "Erro de Autenticação")]
-        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Recurso não encontrado")]
-        [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Erro na API")]
-        public IActionResult GetByRoom(string nameRoom)
-        {
-            if (_roomBll.GetByRoom(nameRoom) == null)
-                return NotFound();
-
-            return Ok(_mapper.Map<RoomListDTO>(_roomBll.GetByRoom(nameRoom)));
-        }
-
-        [HttpGet]
-        [Route("getbyroomidentity/{roomidentity}")]
+        [Route("{roomidentity}")]
         [Produces(typeof(IEnumerable<RoomListDTO>))]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "OK", Type = typeof(RoomListDTO))]
         [SwaggerResponse((int)HttpStatusCode.Unauthorized, Description = "Erro de Autenticação")]

@@ -47,5 +47,10 @@ namespace api.calendar.Dal
 
         public UserAdmin GetByUsersIdentity(Guid userIdentity) =>
             _sqlDbContext.UserAdmin.FirstOrDefault(x => x.UserIdentity == userIdentity);
+
+        public UserAdmin Login(string email, string senha)
+        {
+            return _sqlDbContext.UserAdmin.Where(m => m.Email == email && m.Password == senha).FirstOrDefault();
+        }
     }
 }
