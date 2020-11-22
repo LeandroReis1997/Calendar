@@ -53,7 +53,7 @@ namespace api.calendar.Test
                 DateEndTime = DateTime.Today
             };
 
-            _schedulingDal.Setup(x => x.GetBySchedulingRoomIdentity( agenda.RoomIdentity)).Returns(new List<Scheduling> { agenda});
+            _schedulingDal.Setup(x => x.GetBySchedulingRoomIdentity(agenda.RoomIdentity)).Returns(new List<Scheduling> { agenda });
 
             var result = _schedulingBll.GetBySchedulingRoomIdentity(agenda.RoomIdentity);
 
