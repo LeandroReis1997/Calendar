@@ -40,8 +40,13 @@ namespace api.calendar.Dal
             return user;
         }
 
+        public UserAdmin Get(string email, string password)
+        {
+            return _sqlDbContext.UserAdmin.Where(x => x.Email.ToLower() == email.ToLower() && x.Password == x.Password).FirstOrDefault();
+        }
+
         public List<UserAdmin> GetAllUsers() =>
-            _sqlDbContext.UserAdmin.ToList();
+          _sqlDbContext.UserAdmin.ToList();
         public UserAdmin GetByEmail(string email) =>
             _sqlDbContext.UserAdmin.FirstOrDefault(x => x.Email == email);
 

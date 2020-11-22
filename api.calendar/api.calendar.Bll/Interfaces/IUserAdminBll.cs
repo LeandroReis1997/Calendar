@@ -14,5 +14,6 @@ namespace api.calendar.Bll.Interfaces
         Task<UserAdmin> EditUsers(Guid usersIdentity, UserAdmin user);
         Guid DeleteUsers(Guid userIdentity);
         UserAdmin Login(string Email, string Senha);
+        UserAdmin Get(string email, string password);
     }
 }

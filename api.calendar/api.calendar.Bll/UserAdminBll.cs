@@ -56,6 +56,11 @@ namespace api.calendar.Bll
             }
         }
 
+        public UserAdmin Get(string email, string password)
+        {
+            return _userAdminDal.Get(email, password);
+        }
+
         public List<UserAdmin> GetAllUsers() =>
             _userAdminDal.GetAllUsers();
 

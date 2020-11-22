@@ -14,5 +14,6 @@ namespace api.calendar.Dal.Interfaces
         Task<UserAdmin> EditUsers(UserAdmin user);
         Guid DeleteUsers(Guid userIdentity);
         UserAdmin Login(string email, string senha);
+        UserAdmin Get(string email, string password);
     }
 }

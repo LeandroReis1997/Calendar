@@ -24,6 +24,26 @@ namespace api.calendar.Controllers
             _mapper = mapper;
         }
 
+        [HttpPost]
+        [Route("login")]
+        public async Task<ActionResult<dynamic>> Authenticate([FromBody]UserAdmin model)
+        {
+            var user = _userAdminBll.Get(model.Email, model.Password);
+
+            if (user == null)
+                return NotFound(new { message = "Usuário ou senha inválidos" });
+
+            var token = TokenService.GenerateToken(user);
+
+            user.Password = "";
+
+            return new
+            {
+                user = user,
+                token = token
+            };
+        }
+
         [HttpGet]
         [Produces(typeof(IEnumerable<UserAdminListDTO>))]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "OK", Type = typeof(IEnumerable<UserAdminListDTO>))]
